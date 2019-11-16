@@ -5,6 +5,10 @@ import java.util.Scanner;
 import model.AiLogic;
 import model.containers.BoardCell;
 
+/**
+ * @author Panu
+ *
+ */
 public class ProtoView {
 	
 	static int SCORE = 13;
@@ -65,7 +69,7 @@ public class ProtoView {
 				boolean hit = gl2.setNewHit(temp.getRow(), temp.getColumn());
 				
 				if(hit) { System.out.println("You hit!"); }
-				gl1.giveFeedback(hit);
+				gl1.giveAiFeedback(hit);
 				
 				System.out.print("player1 hit: " + temp.getRow() + " " + temp.getColumn() + "     ");
 				
@@ -75,12 +79,12 @@ public class ProtoView {
 				//turn done
 				
 				//pl2 turn
-				int[] n = gl2.playRobotsTurn();
+				int[] n = gl2.playAiTurn();
 				temp = new BoardCell(n[0], n[1]);
 				hit = gl1.setNewHit(temp.getRow(), temp.getColumn());
 				System.out.print("player2 hit: " + temp.getRow() + " " + temp.getColumn());
 		
-				gl2.giveFeedback(hit);
+				gl2.giveAiFeedback(hit);
 				
 				if(hit==true) {
 					score2++;
@@ -139,16 +143,16 @@ public class ProtoView {
 			
 			for(int i=0; i<65; i++) {
 				//pl1 turn
-				int[] n = gl1.playRobotsTurn();
+				int[] n = gl1.playAiTurn();
 						
 				BoardCell temp = new BoardCell(n[0], n[1]);
 				gl1.selectLastHit(n[0], n[1]);
 				boolean hit = gl2.setNewHit(temp.getRow(), temp.getColumn());
 				
 				if(hit) { System.out.println("You hit!"); }
-				gl1.giveFeedback(hit);
+				gl1.giveAiFeedback(hit);
 				
-				System.out.print("player1 hit: " + temp.getRow() + " " + temp.getColumn() + "     ");
+				System.out.print("player1 hit: " + temp.getRow() + " " + temp.getColumn() + "               ");
 				
 				if(hit==true) {
 					score1++;
@@ -156,12 +160,12 @@ public class ProtoView {
 				//turn done
 				
 				//pl2 turn
-				n = gl2.playRobotsTurn();
+				n = gl2.playAiTurn();
 				temp = new BoardCell(n[0], n[1]);
 				hit = gl1.setNewHit(temp.getRow(), temp.getColumn());
 				System.out.print("player2 hit: " + temp.getRow() + " " + temp.getColumn());
 		
-				gl2.giveFeedback(hit);
+				gl2.giveAiFeedback(hit);
 				
 				if(hit==true) {
 					score2++;

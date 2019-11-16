@@ -4,6 +4,12 @@ import java.util.ArrayList;
 import macro.Macro;
 import model.containers.BoardCell;
 
+/**
+ * @author Panu
+ *This class generates algorithmically firing solutions to destroy whole forts.
+ *A new instance is created for each fort and the algorithm operates locally around root cell on 5x5 area,
+ *which is based on the fact that a fort can only expand 2 cells from the root to any direction.
+ */
 public class PinpointAlgorithm {
 	
 	private int[] availableForts;
@@ -32,12 +38,12 @@ public class PinpointAlgorithm {
 	 */
 	public PinpointAlgorithm(int row, int column, int[][] old_hits) {
 
-		actuals = new int[8][8];
-		potentials = new int[8][8];
+		actuals = new int[Macro.DIM_ROWS][Macro.DIM_COLUMNS];
+		potentials = new int[Macro.DIM_ROWS][Macro.DIM_COLUMNS];
 
 		// setup the lists
-		for (int i = 0; i < 8; i++) {
-			for (int j = 0; j < 8; j++) {
+		for (int i = 0; i < Macro.DIM_ROWS; i++) {
+			for (int j = 0; j < Macro.DIM_COLUMNS; j++) {
 				actuals[i][j] = Macro.UNKNOWN;
 				potentials[i][j] = Macro.UNKNOWN;
 			}
@@ -45,8 +51,8 @@ public class PinpointAlgorithm {
 
 		// set all old hits as not applicable targets
 		if (old_hits != null) {
-			for (int i = 0; i < 8; i++) {
-				for (int j = 0; j < 8; j++) {
+			for (int i = 0; i < Macro.DIM_ROWS; i++) {
+				for (int j = 0; j < Macro.DIM_COLUMNS; j++) {
 					actuals[i][j] = old_hits[i][j] == 1 ? Macro.NOT_APPLICABLE_TARGET : Macro.UNKNOWN;
 					potentials[i][j] = old_hits[i][j] == 1 ? Macro.NOT_APPLICABLE_TARGET : Macro.UNKNOWN;
 				}
@@ -130,8 +136,8 @@ public class PinpointAlgorithm {
 				// create list of possibles
 				// minor selection consists of one fort's possibles.
 				ArrayList<BoardCell> minorSelection = new ArrayList<>();
-				for (int i = 0; i < 8; i++) {
-					for (int j = 0; j < 8; j++) {
+				for (int i = 0; i < Macro.DIM_ROWS; i++) {
+					for (int j = 0; j < Macro.DIM_COLUMNS; j++) {
 						if (potentials[i][j] == Macro.POTENTIAL) {
 							minorSelection.add(new BoardCell(i, j));
 						}
@@ -142,9 +148,9 @@ public class PinpointAlgorithm {
 				for (int i = 0; i < minorSelection.size(); i++) {
 
 					// create quick copy of actuals. We don't want to write on the original actuals.
-					int[][] testMap = new int[8][8];
-					for (int s = 0; s < 8; s++) {
-						for (int t = 0; t < 8; t++) {
+					int[][] testMap = new int[Macro.DIM_ROWS][Macro.DIM_COLUMNS];
+					for (int s = 0; s < Macro.DIM_ROWS; s++) {
+						for (int t = 0; t < Macro.DIM_COLUMNS; t++) {
 							int n = actuals[s][t];
 							testMap[s][t] = n;
 						}
@@ -202,8 +208,8 @@ public class PinpointAlgorithm {
 		// get the first row and the first column the detected fort habits.
 		int minRow = 7;
 		int minCol = 7;
-		for (int i = 0; i < 8; i++) {
-			for (int j = 0; j < 8; j++) {
+		for (int i = 0; i < Macro.DIM_ROWS; i++) {
+			for (int j = 0; j < Macro.DIM_COLUMNS; j++) {
 				if (referenceMap[i][j] == Macro.ACTUAL) {
 					minRow = i < minRow ? i : minRow;
 					minCol = j < minCol ? j : minCol;
@@ -271,8 +277,8 @@ public class PinpointAlgorithm {
 
 		int[][] temp = new int[8][8];
 
-		for (int i = 0; i < 8; i++) {
-			for (int j = 0; j < 8; j++) {
+		for (int i = 0; i < Macro.DIM_ROWS; i++) {
+			for (int j = 0; j < Macro.DIM_COLUMNS; j++) {
 				if (in[i][j] == Macro.POTENTIAL) {
 					temp[i][j] = Macro.POTENTIAL;
 				}
@@ -322,8 +328,8 @@ public class PinpointAlgorithm {
 	private int amountOf(int i, int[][] a) {
 		int output = 0;
 		String pout = "";
-		for (int n = 0; n < 8; n++) {
-			for (int k = 0; k < 8; k++) {
+		for (int n = 0; n < Macro.DIM_ROWS; n++) {
+			for (int k = 0; k < Macro.DIM_COLUMNS; k++) {
 				if (a[n][k] == i) {
 					pout += "||" + n + ", " + k;
 					output++;

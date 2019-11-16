@@ -2,6 +2,10 @@ package model.containers;
 
 import macro.Macro;
 
+/**
+ * @author Panu
+ *
+ */
 public class GameBoard {
 	
 	private BoardCell[][] board;
@@ -21,7 +25,7 @@ public class GameBoard {
 	public void hardReset() {
 		for(int i=0; i<Macro.DIM_ROWS; i++) {
 			for(int j=0; j<Macro.DIM_COLUMNS; j++) {
-				board[i][j] = new BoardCell(Macro.EMPTY, i, j);
+				board[i][j] = new BoardCell(Macro.EMPTY_OR_UNKNOWN, i, j);
 			}
 		}
 	}

@@ -1,5 +1,9 @@
 package model.containers;
 
+/**
+ * @author Panu
+ *
+ */
 public class BoardCell {
 	private int type;
 	private int row;

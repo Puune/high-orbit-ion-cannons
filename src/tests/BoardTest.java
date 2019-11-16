@@ -37,7 +37,7 @@ class BoardTest {
 	public void testReset() {
 		board.hit(2, 2);
 		board.hardReset();
-		assertEquals(Macro.EMPTY, board.getCell(2, 2).getType(), "Fail: Board not hard reset");
+		assertEquals(Macro.EMPTY_OR_UNKNOWN, board.getCell(2, 2).getType(), "Fail: Board not hard reset");
 	}
 	
 	@Test
@@ -50,7 +50,7 @@ class BoardTest {
 		}
 		assertEquals(Macro.FORT, board.getCell(0,0).getType(), "Fail: Fort was not built");
 		assertEquals(Macro.FORT, board.getCell(1, 0).getType(), "Fail: fort was not built");
-		assertEquals(Macro.EMPTY, board.getCell(7, 7).getType(), "Fail: there are forts in wrong places");
+		assertEquals(Macro.EMPTY_OR_UNKNOWN, board.getCell(7, 7).getType(), "Fail: there are forts in wrong places");
 	}
 	
 	
@@ -65,7 +65,7 @@ class BoardTest {
 		board.hit(0, 1); board.hit(1, 0);
 		board.softReset();
 		assertEquals(Macro.FORT, board.getCell(1, 0).getType(), "Fail: Should be fort but is..");
-		assertEquals(Macro.EMPTY, board.getCell(5, 5).getType(), "Fail: Should be empty but is..");
+		assertEquals(Macro.EMPTY_OR_UNKNOWN, board.getCell(5, 5).getType(), "Fail: Should be empty but is..");
 	}
 	
 	@Test
