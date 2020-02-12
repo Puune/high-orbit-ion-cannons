@@ -8,7 +8,7 @@ instead of ships-of-the-line, we are targetting bunkers that are 2d in shape. Ea
 - a plus sign (3x3)
 - square (2x2)
 - L shape (2x2)
-- I shape (2x1)
+- I shape (2x1)  
 Each player in turn fire at a position, and will receive feedback whether they hit or missed. Player to first reach 15 points = destroy all forts wins.
   
 ### Goal
