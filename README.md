@@ -4,7 +4,7 @@ This is refractoring projet of a school project of a fun game called High orbit 
 
 #### Rules
 
-instead of ships-of-the-line, we are targetting bunkers that are 2d in shape. Each player has following bunkers to plonk on the map:
+instead of ships-of-the-line, we are targetting bunkers that are 2d in shape. Each player has following bunkers to plonk on the map:  
   X       X X     X          X
 X X X     X X     X  X       X
   X
