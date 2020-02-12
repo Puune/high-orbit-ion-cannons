@@ -5,9 +5,9 @@ This is refractoring projet of a school project of a fun game called High orbit 
 #### Rules
 
 instead of ships-of-the-line, we are targetting bunkers that are 2d in shape. Each player has following bunkers to plonk on the map:
-  *       * *     *          *
-* * *     * *     *  *       *
-  *
+  X       X X     X          X
+X X X     X X     X  X       X
+  X
 Each player in turn fire at a position, and will receive feedback whether they hit or missed. Player to first reach 15 points = destroy all forts wins.
   
 ### Goal
