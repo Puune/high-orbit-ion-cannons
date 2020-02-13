@@ -1,6 +1,6 @@
 # high-orbit-ion-cannons
 
-This is refractoring projet of a school project of a fun game called High orbit ion cannons. Oh, and the game itself is a implementation of `battleships`. This project was extracted form a overarching project that had a Lego Mindstorm robot and a UI to talk with the robot, I myself creating the game logic.
+This is refractoring projet of a school project of a fun game called High orbit ion cannons. Oh, and the game itself is a implementation of `battleships`. This project was extracted from an overarching project that had a Lego Mindstorm robot and a UI to talk with the robot. I was responsible of the game logic.
 
 #### Rules
 
